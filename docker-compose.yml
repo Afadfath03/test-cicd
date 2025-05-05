@@ -6,8 +6,8 @@ services:
     container_name: mysql_devel_container  # Tentukan nama container untuk mysql_devel
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: Telkom123!
-      MYSQL_DATABASE: academics_devel
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: db_admin_devel
     volumes:
       - mysql_data_devel:/var/lib/mysql
       - ./mysql_conf/my.cnf:/etc/mysql/conf.d/my.cnf:ro
@@ -21,8 +21,8 @@ services:
     container_name: mysql_prod_container  # Tentukan nama container untuk mysql_prod
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: Telkom123!
-      MYSQL_DATABASE: academics
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: db_admin
     volumes:
       - mysql_data_prod:/var/lib/mysql
       - ./mysql_conf/my.cnf:/etc/mysql/conf.d/my.cnf:ro
