@@ -22,7 +22,9 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             echo "Konek ke server..."
+            
             cd /home/afad/test-cicd
             echo "masuk ke folder test-cicd..."
+            
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose up -d
             echo "docker compose up..."
