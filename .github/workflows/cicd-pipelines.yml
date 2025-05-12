@@ -28,7 +28,7 @@ jobs:
 
             # going superuser
             echo "Masuk ke superuser..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo su
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S su
 
             # Install Docker dan Docker Compose
             
