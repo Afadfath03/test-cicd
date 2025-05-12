@@ -42,3 +42,8 @@ jobs:
             echo "Dump database dari development..."
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysqldump -u root -padmin123 --databases db_admin_devel > /home/afadfath/test-cicd/db_admin_devel.sql
             
+            echo "Copy dump file ke server production..."
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker cp /home/afadfath/test-cicd/db_admin_devel.sql mysql_prod_container:/tmp/db_admin_devel.sql
+
+            echo "Import dump ke database production..."
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_prod_container sh -c "exec mysql -u root -padmin123 db_admin < /tmp/db_admin_devel.sql"
