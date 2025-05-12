@@ -25,8 +25,12 @@ jobs:
             
             cd /home/afad/test-cicd
             echo "masuk ke folder test-cicd..."
+
+            # going superuser
+            echo "Masuk ke superuser..."
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S su
             
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose up -d
+            docker compose up -d
             echo "docker compose up..."
 
             # CI (Continuous Integration) untuk database
