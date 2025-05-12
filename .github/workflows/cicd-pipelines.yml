@@ -28,10 +28,12 @@ jobs:
 
             # going superuser
             echo "Masuk ke superuser..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S su
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo su
+
+            # Install Docker dan Docker Compose
             
-            docker compose up -d
             echo "docker compose up..."
+            docker compose up -d
 
             # CI (Continuous Integration) untuk database
             echo "Menunggu MySQL untuk siap..."
