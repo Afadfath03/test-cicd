@@ -23,8 +23,8 @@ jobs:
           script: |
             echo "Konek ke server..."
             
-            cd /home/afad/test-cicd
             echo "masuk ke folder test-cicd..."
+            cd /home/afad/test-cicd
             
             echo "docker compse down if running..."
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker compose down
@@ -47,5 +47,5 @@ jobs:
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker cp /home/afadfath/test-cicd/db_admin_devel.sql mysql_prod_container:/tmp/db_admin_devel.sql
 
             echo "Import dump ke database production..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_prod_container mysql -u root -padmin123 -e "SHOW DATABASES;"
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_prod_container mysql -u root -padmin123 -e "CREATE DATABASE IF NOT EXISTS db_admin; SHOW DATABASES; USE db_admin;"
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_prod_container sh -c "exec mysql -u root -padmin123 db_admin < /tmp/db_admin_devel.sql"
