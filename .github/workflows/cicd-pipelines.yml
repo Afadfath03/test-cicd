@@ -37,7 +37,7 @@ jobs:
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S sleep 10
 
             echo "Cek database di development..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 -e "CREATE DATABASE IF NOT EXISTS db_admin_devel;"
+            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 db_admin_devel < ./mysql/init.sql
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 -e "SHOW DATABASES;"
 
             # CD (Continuous Deployment) untuk database

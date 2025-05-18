@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS db_admin;
-USE db_admin;
+CREATE DATABASE IF NOT EXISTS db_admin_devel;
+USE db_admin_devel;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
