@@ -1,9 +1,8 @@
 version: '3.7'
 
 services:
-  # Layanan MySQL untuk Development
   mysql_devel:
-    container_name: mysql_devel_container  # Tentukan nama container untuk mysql_devel
+    container_name: mysql_devel_container
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: admin123
@@ -14,11 +13,10 @@ services:
     networks:
       - devel_network
     ports:
-      - "3307:3306"  # Expose port 3307 di host untuk akses development
+      - "3307:3306"
 
-  # Layanan MySQL untuk Production
   mysql_prod:
-    container_name: mysql_prod_container  # Tentukan nama container untuk mysql_prod
+    container_name: mysql_prod_container
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: admin123
@@ -29,14 +27,12 @@ services:
     networks:
       - prod_network
     ports:
-      - "3308:3306"  # Expose port 3308 di host untuk akses production
+      - "3308:3306"
 
-# Volume untuk menyimpan data MySQL
 volumes:
   mysql_data_devel:
   mysql_data_prod:
 
-# Jaringan untuk Development dan Production
 networks:
   devel_network:
     driver: bridge
