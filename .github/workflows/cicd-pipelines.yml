@@ -38,8 +38,8 @@ jobs:
             
             echo "cek container mysql_devel..."
             echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 -e "SHOW DATABASES;"
-            echo "cek database db_admin_devel..."
-            echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 -e "USE db_admin_devel; SHOW TABLES;"
+            # echo "cek database db_admin_devel..."
+            # echo "${{ secrets.SERVER_PASSWORD }}" | sudo -S docker exec mysql_devel_container mysql -u root -padmin123 -e "USE db_admin_devel; SHOW TABLES;"
 
 
             # # Init database development

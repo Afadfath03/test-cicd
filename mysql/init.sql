@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS db_admin_devel;
 USE db_admin_devel;
 
 CREATE TABLE IF NOT EXISTS users (
