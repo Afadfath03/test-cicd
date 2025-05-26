@@ -38,7 +38,7 @@ jobs:
                 git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_USERNAME }}/test-cicd .
             else
                 echo "Folder .git sudah ada, melakukan git pull..."
-                git pull origin main
+                git pull
             fi
 
             echo "=== Udah masuk ke folder afmh ==="
