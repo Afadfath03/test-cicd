@@ -1,0 +1,42 @@
+name: CD Example
+
+on:
+    push:
+        branches:
+        - main
+
+jobs:
+  db_cicd:
+    name: Production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: SSH Connect
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            echo "=== Udah konek bang ==="
+            
+            echo "masuk ke folder afmh..."
+
+            if [ ! -d "afmh" ]; then
+                echo "Folder afmh tidak ada, membuat folder..."
+                mkdir afmh
+            fi
+
+            cd afmh
+            
+            if [ ! -d ".git" ]; then
+                echo "Folder .git tidak ada, melakukan git clone..."
+                git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_TOKEN }}@github.com/${{ secrets.GIT_USERNAME }}/test-cicd .
+            else
+                echo "Folder .git sudah ada, melakukan git pull..."
+                git pull origin main
+            fi
