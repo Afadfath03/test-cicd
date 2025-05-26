@@ -3,7 +3,7 @@ name: CD Example
 on:
     push:
         branches:
-        - main
+        - master
 
 jobs:
   db_cicd:
