@@ -40,3 +40,8 @@ jobs:
                 echo "Folder .git sudah ada, melakukan git pull..."
                 git pull origin main
             fi
+
+            echo "=== Udah masuk ke folder afmh ==="
+            pwd
+            echo "=== Isi folder afmh ==="
+            ls -la
